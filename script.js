@@ -1,14 +1,20 @@
-// STEP 5: Array of names
-var names = ["Yaakov", "John", "Jen", "Jason", "Paul", "Frank", "Larry", "Paula", "Laura", "Jim"];
+// STEP 0: Request the list of categories from the server
+$ajaxUtils.sendGetRequest(
+  allCategoriesUrl,
+  function (categories) {
 
-// STEP 6: Loop over the names
-for (var i = 0; i < names.length; i++) {
-  var name = names[i];
-  var firstLetter = name.charAt(0).toLowerCase();
+    // STEP 1: Pick a random category object
+    var randomCategory = categories[Math.floor(Math.random() * categories.length)];
 
-  if (firstLetter === 'j') {
-    byeSpeaker.speak(name);
-  } else {
-    helloSpeaker.speak(name);
-  }
-}
+    // STEP 2: Prepare the short_name (with quotes) for the onclick HTML
+    var randomCategoryShortName = "'" + randomCategory.short_name + "'";
+
+    // STEP 3: Replace {{randomCategoryShortName}} in the HTML snippet
+    var homeHtmlToInsertIntoMainPage =
+      insertProperty(homeHtml, "randomCategoryShortName", randomCategoryShortName);
+
+    // STEP 4: Insert the updated HTML into the #main-content
+    insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
+  },
+  true // JSON response expected
+);
