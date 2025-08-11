@@ -3,14 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <title>Module 5 Solution</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding-top: 20px;
+    }
+    .tile {
+      border: 1px solid #ddd;
+      padding: 40px;
+      margin: 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .tile:hover {
+      background-color: #f8f8f8;
+    }
+  </style>
 </head>
 <body>
-  <a href="#" onclick="$dc.loadMenuItems({{randomCategoryShortName}});">
-  <div class="text-center">
-    <div class="tile-title">Specials</div>
-  </div>
-</a>
 
+<div class="container">
+  <div class="row text-center">
+    <div class="col-sm-4">
+      <a href="#" onclick="$dc.loadMenuItems('L');">
+        <div class="tile">
+          <h3>Menu</h3>
+        </div>
+      </a>
+    </div>
+    <div class="col-sm-4">
+      <!-- Specials tile with placeholder -->
+      <a href="#" onclick="$dc.loadMenuItems({{randomCategoryShortName}});">
+        <div class="tile">
+          <h3>Specials</h3>
+        </div>
+      </a>
+    </div>
+    <div class="col-sm-4">
+      <a href="#">
+        <div class="tile">
+          <h3>Map</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div id="main-content" class="text-center" style="margin-top: 40px;">
+    <p>Welcome to our Restaurant! Click a tile above.</p>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
-
